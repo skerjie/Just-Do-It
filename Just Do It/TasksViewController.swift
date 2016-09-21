@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  TasksViewController.swift
 //  Just Do It
 //
 //  Created by Andrei Palonski on 19.09.16.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class TasksViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
   @IBOutlet weak var tableView: UITableView!
   
@@ -55,6 +55,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
   }
   @IBAction func plusTapped(_ sender: AnyObject) {
     performSegue(withIdentifier: "addSegue", sender: nil)
+      }
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    let nextVC = segue.destination as! CreateTaskViewController
+    // создаем свойство nextVC к которому обращаются из CreateTaskViewController оно как бы говорит эй, CreateTaskViewController у тебя есть свойство previousVC и оно ссылается на меня 
+    nextVC.previousVC = self
   }
   
 }

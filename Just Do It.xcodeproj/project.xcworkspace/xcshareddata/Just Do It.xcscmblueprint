@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "9F5402C9BFE761EBDF392D98A8B73F35D91A2FA1",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "351AD2E86EAC44EA2BAC2AB71AE70BEF096554C6" : 9223372036854775807,
+    "9F5402C9BFE761EBDF392D98A8B73F35D91A2FA1" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "D98ACFF3-9909-4D7F-B80D-AEDFE2148556",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "351AD2E86EAC44EA2BAC2AB71AE70BEF096554C6" : "",
+    "9F5402C9BFE761EBDF392D98A8B73F35D91A2FA1" : "Just%20Do%20It\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "Just Do It",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Just Do It.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/skerjie\/MyRestraunts.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "351AD2E86EAC44EA2BAC2AB71AE70BEF096554C6"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/skerjie\/Just-Do-It.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "9F5402C9BFE761EBDF392D98A8B73F35D91A2FA1"
+    }
+  ]
+}
