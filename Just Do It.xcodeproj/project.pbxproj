@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F11C224E1D94792700C11635 /* CompleteTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11C224D1D94792700C11635 /* CompleteTaskViewController.swift */; };
 		F1F095711D907ECA0035492D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F095701D907ECA0035492D /* AppDelegate.swift */; };
 		F1F095731D907ECA0035492D /* TasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F095721D907ECA0035492D /* TasksViewController.swift */; };
 		F1F095761D907ECA0035492D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1F095741D907ECA0035492D /* Main.storyboard */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F11C224D1D94792700C11635 /* CompleteTaskViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompleteTaskViewController.swift; sourceTree = "<group>"; };
 		F1F0956D1D907ECA0035492D /* Just Do It.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Just Do It.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1F095701D907ECA0035492D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F1F095721D907ECA0035492D /* TasksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksViewController.swift; sourceTree = "<group>"; };
@@ -63,6 +65,7 @@
 				F1F095701D907ECA0035492D /* AppDelegate.swift */,
 				F1F095721D907ECA0035492D /* TasksViewController.swift */,
 				F1F095871D908DA60035492D /* CreateTaskViewController.swift */,
+				F11C224D1D94792700C11635 /* CompleteTaskViewController.swift */,
 				F1F095851D9085E40035492D /* Task.swift */,
 				F1F095741D907ECA0035492D /* Main.storyboard */,
 				F1F0957A1D907ECA0035492D /* Assets.xcassets */,
@@ -148,6 +151,7 @@
 			files = (
 				F1F095861D9085E40035492D /* Task.swift in Sources */,
 				F1F095731D907ECA0035492D /* TasksViewController.swift in Sources */,
+				F11C224E1D94792700C11635 /* CompleteTaskViewController.swift in Sources */,
 				F1F095791D907ECA0035492D /* Just_Do_It.xcdatamodeld in Sources */,
 				F1F095711D907ECA0035492D /* AppDelegate.swift in Sources */,
 				F1F095881D908DA60035492D /* CreateTaskViewController.swift in Sources */,

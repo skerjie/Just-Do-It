@@ -28,6 +28,10 @@ class CreateTaskViewController: UIViewController {
    
     // добавление задания к массиву заданий [Task] из другого ViewController'a
     previousVC.tasks.append(task)
+    // обновляем информацию о заданиях после добавления
+    previousVC.tableView.reloadData()
+    // после нажатия кнопки Add автоматически возвращаемся на предыдущий ViewController
+    navigationController!.popViewController(animated: true)
   }
   
   override func didReceiveMemoryWarning() {

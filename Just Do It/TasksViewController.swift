@@ -9,9 +9,10 @@
 import UIKit
 
 class TasksViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-
+  
   @IBOutlet weak var tableView: UITableView!
   
+  var selectedIndex = 0
   var tasks : [Task] = []
   
   override func viewDidLoad() {
@@ -21,25 +22,32 @@ class TasksViewController: UIViewController, UITableViewDataSource, UITableViewD
     tableView.dataSource = self
     tableView.delegate = self
   }
-
+  
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return tasks.count
   }
-
+  
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = UITableViewCell()
     let task = tasks[indexPath.row]
     if task.isImportant {
       cell.textLabel?.text = "❗️\(task.name)"
     } else {
-     cell.textLabel?.text = task.name
+      cell.textLabel?.text = task.name
     }
     
     return cell
   }
   
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    
+    selectedIndex = indexPath.row
+    let task = tasks[indexPath.row]
+    performSegue(withIdentifier: "selectedTaskSegue", sender: task)
+  }
+  
   func makeTask() -> [Task] {
-  let task1 = Task()
+    let task1 = Task()
     task1.name = "Walk the dog"
     task1.isImportant = false
     
@@ -55,11 +63,19 @@ class TasksViewController: UIViewController, UITableViewDataSource, UITableViewD
   }
   @IBAction func plusTapped(_ sender: AnyObject) {
     performSegue(withIdentifier: "addSegue", sender: nil)
-      }
+  }
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    let nextVC = segue.destination as! CreateTaskViewController
-    // создаем свойство nextVC к которому обращаются из CreateTaskViewController оно как бы говорит эй, CreateTaskViewController у тебя есть свойство previousVC и оно ссылается на меня 
-    nextVC.previousVC = self
+    if segue.identifier == "addSegue" {
+      let nextVC = segue.destination as! CreateTaskViewController
+      // создаем свойство nextVC к которому обращаются из CreateTaskViewController оно как бы говорит эй, CreateTaskViewController у тебя есть свойство previousVC и оно ссылается на меня
+      nextVC.previousVC = self
+    }
+    
+    if segue.identifier == "selectedTaskSegue" {
+      let nextVC = segue.destination as! CompleteTaskViewController
+      nextVC.task = sender as! Task
+      nextVC.previousVC = self
+    }
   }
   
 }
