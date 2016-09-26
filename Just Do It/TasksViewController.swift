@@ -18,9 +18,14 @@ class TasksViewController: UIViewController, UITableViewDataSource, UITableViewD
   override func viewDidLoad() {
     super.viewDidLoad()
     // Do any additional setup after loading the view, typically from a nib.
-    tasks = makeTask()
+    
+    // tasks = makeTask()
     tableView.dataSource = self
     tableView.delegate = self
+  }
+  
+  override func viewWillAppear(_ animated: Bool) {
+    getTasks()
   }
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -46,30 +51,41 @@ class TasksViewController: UIViewController, UITableViewDataSource, UITableViewD
     performSegue(withIdentifier: "selectedTaskSegue", sender: task)
   }
   
-  func makeTask() -> [Task] {
-    let task1 = Task()
-    task1.name = "Walk the dog"
-    task1.isImportant = false
-    
-    let task2 = Task()
-    task2.name = "Play with Steshka"
-    task2.isImportant = true
-    
-    let task3 = Task()
-    task3.name = "To be boo with my Cru"
-    task3.isImportant = false
-    
-    return [task1,task2,task3]
-  }
+  //  func makeTask() -> [Task] {
+  //    let task1 = Task()
+  //    task1.name = "Walk the dog"
+  //    task1.isImportant = false
+  //
+  //    let task2 = Task()
+  //    task2.name = "Play with Steshka"
+  //    task2.isImportant = true
+  //
+  //    let task3 = Task()
+  //    task3.name = "To be boo with my Cru"
+  //    task3.isImportant = false
+  //
+  //    return [task1,task2,task3]
+  //  }
+  
   @IBAction func plusTapped(_ sender: AnyObject) {
     performSegue(withIdentifier: "addSegue", sender: nil)
   }
-  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    if segue.identifier == "addSegue" {
-      let nextVC = segue.destination as! CreateTaskViewController
-      // создаем свойство nextVC к которому обращаются из CreateTaskViewController оно как бы говорит эй, CreateTaskViewController у тебя есть свойство previousVC и оно ссылается на меня
-      nextVC.previousVC = self
+  
+  func getTasks() {
+     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    do {
+    tasks = try context.fetch(Task.fetchRequest()) as [Task]
+    } catch {
+    print(error.localizedDescription)
     }
+  }
+  
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    //    if segue.identifier == "addSegue" {
+    //      let nextVC = segue.destination as! CreateTaskViewController
+    //      // создаем свойство nextVC к которому обращаются из CreateTaskViewController оно как бы говорит эй, CreateTaskViewController у тебя есть свойство previousVC и оно ссылается на меня
+    //      nextVC.previousVC = self
+    //    }
     
     if segue.identifier == "selectedTaskSegue" {
       let nextVC = segue.destination as! CompleteTaskViewController
