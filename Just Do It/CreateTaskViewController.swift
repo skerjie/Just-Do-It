@@ -28,7 +28,7 @@ class CreateTaskViewController: UIViewController {
     task.name = nameTextField.text!
     task.isImportant = importantSwitch.isOn
     (UIApplication.shared.delegate as! AppDelegate).saveContext()
-   
+    
     // добавление задания к массиву заданий [Task] из другого ViewController'a
     // previousVC.tasks.append(task)
     // обновляем информацию о заданиях после добавления

@@ -12,11 +12,19 @@ class TasksViewController: UIViewController, UITableViewDataSource, UITableViewD
   
   @IBOutlet weak var tableView: UITableView!
   
-  var selectedIndex = 0
+  //var selectedIndex = 0
   var tasks : [Task] = []
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    
+    // для градиента фона
+//    let background = CAGradientLayer().gradNiceColor()
+//    background.frame = self.view.bounds
+//    self.view.layer.insertSublayer(background, at: 0)
+    
+    //self.tableView.layer.insertSublayer(background, at: 0)
+    
     // Do any additional setup after loading the view, typically from a nib.
     
     // tasks = makeTask()
@@ -26,6 +34,7 @@ class TasksViewController: UIViewController, UITableViewDataSource, UITableViewD
   
   override func viewWillAppear(_ animated: Bool) {
     getTasks()
+    tableView.reloadData()
   }
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -36,9 +45,10 @@ class TasksViewController: UIViewController, UITableViewDataSource, UITableViewD
     let cell = UITableViewCell()
     let task = tasks[indexPath.row]
     if task.isImportant {
-      cell.textLabel?.text = "❗️\(task.name)"
+      cell.textLabel?.text = "❗️\(task.name!)" // ! чтобы убрать слово Optional
     } else {
-      cell.textLabel?.text = task.name
+      cell.textLabel?.text = task.name! // ! чтобы убрать слово Optional
+      
     }
     
     return cell
@@ -46,7 +56,7 @@ class TasksViewController: UIViewController, UITableViewDataSource, UITableViewD
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     
-    selectedIndex = indexPath.row
+    // selectedIndex = indexPath.row
     let task = tasks[indexPath.row]
     performSegue(withIdentifier: "selectedTaskSegue", sender: task)
   }
@@ -72,11 +82,11 @@ class TasksViewController: UIViewController, UITableViewDataSource, UITableViewD
   }
   
   func getTasks() {
-     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     do {
-    tasks = try context.fetch(Task.fetchRequest()) as [Task]
+      tasks = try context.fetch(Task.fetchRequest()) as [Task]
     } catch {
-    print(error.localizedDescription)
+      print(error.localizedDescription)
     }
   }
   
@@ -89,8 +99,8 @@ class TasksViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     if segue.identifier == "selectedTaskSegue" {
       let nextVC = segue.destination as! CompleteTaskViewController
-      nextVC.task = sender as! Task
-      nextVC.previousVC = self
+      nextVC.task = sender as? Task
+      // nextVC.previousVC = self
     }
   }
   
